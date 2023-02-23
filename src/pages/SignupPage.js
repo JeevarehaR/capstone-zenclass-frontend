@@ -7,50 +7,72 @@ import * as yup from "yup";
 import { API } from "../Global";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const formValidationSchema = yup.object({
+  username: yup
+    .string()
+    .min(4, "Username too short!")
+    .required("Username required!"),
+
   email: yup
     .string()
-    .min(5, "Provide a valid mail id!")
-    .required("Please provide a email address")
+    .min(4, "Provide a valid mail id")
+    .required("Email required")
     .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, "Invalid email"),
 
   password: yup
     .string()
     .min(8, "Password must be above 8 chars!")
+    .max(15, "Password too long!")
     .required("Password required!")
     .matches(/\d/, "must contain a number")
-    .matches(/[!@#$%^&*(),.?":{}|<>]/, "must include a special character"),
+    .matches(/[!@#$%^&*(),.?":{}|<>]/, "must include special character"),
+
+  confirmPassword: yup
+    .string()
+    .required("Re-enter your password")
+    .oneOf([yup.ref("password"), null], "Passwords mismatch!"),
 });
 
-function Login() {
+function Signup() {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
+      username: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
     validationSchema: formValidationSchema,
-    onSubmit: (user) => {
-      loginUser(user);
+    onSubmit: (newUser) => {
+      console.log("onsubmit", newUser);
+      createUser(newUser);
     },
   });
-  const loginUser = (newUser) => {
+  const createUser = (newUser) => {
     const id = toast.loading("Please wait...");
-    fetch(`${API}/auth/login`, {
+    fetch(`${API}/auth/signup`, {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         toast.update(id, {
           render: data.message,
-          type: data.message === "Login successful" ? "success" : "error",
+          type: data.message === "Great! You Signed up!" ? "success" : "error",
           isLoading: false,
           autoClose: 5000,
         });
+      })
+      .then(() => {
+        setTimeout(() => {
+          navigate("/login");
+        }, 6000);
       })
       .catch((err) => {
         toast(err.message);
@@ -71,6 +93,22 @@ function Login() {
               <Col md={6}>
                 <ToastContainer />
                 <Form onSubmit={formik.handleSubmit}>
+                  <Form.Group className="form-group mt-2">
+                    <Form.Label className="label-style mb-0">Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      placeholder="Example : johndoe"
+                      value={formik.values.username}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                    <p className="error">
+                      {formik.touched.username && formik.errors.username
+                        ? formik.errors.username
+                        : ""}
+                    </p>
+                  </Form.Group>
                   <Form.Group className="form-group mt-2">
                     <Form.Label className="label-style mb-0">Email</Form.Label>
                     <Form.Control
@@ -106,26 +144,45 @@ function Login() {
                         : ""}
                     </p>
                   </Form.Group>
-
+                  <Form.Group className="form-group mt-1">
+                    <Form.Label className="label-style mb-0">
+                      Confirm Password
+                    </Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      placeholder="Re-enter password"
+                      value={formik.values.confirmPassword}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                    <p className="error">
+                      {formik.touched.confirmPassword &&
+                      formik.errors.confirmPassword
+                        ? formik.errors.confirmPassword
+                        : ""}
+                    </p>
+                  </Form.Group>
                   <Button
                     type="submit"
                     className="login-btn btn btn-lg w-100 mt-4 mb-4"
                   >
-                    Login
+                    Signup
                   </Button>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <p style={{ marginRight: "5px" }}>Already an user?</p>
+                    <Link
+                      to="/login"
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        textAlign: "center",
+                      }}
+                    >
+                      Login
+                    </Link>
+                  </div>
                 </Form>
-                <Row style={{ display: "flex", justifyContent: "center" }}>
-                  <Link
-                    to="/forgotpassword"
-                    style={{
-                      textDecoration: "none",
-                      color: "black",
-                      textAlign: "center",
-                    }}
-                  >
-                    Forgot Password ?
-                  </Link>
-                </Row>
               </Col>
             </Col>
           </Row>
@@ -142,4 +199,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

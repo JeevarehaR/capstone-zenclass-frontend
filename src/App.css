@@ -74,6 +74,95 @@ flex-wrap: wrap;
     /* max-width: 500px; */
     min-width: 347.5px;
         height: 100vh;
-       
+           
+}
+
+.sidebar-logo{
+    height: 35px;
+    width: 40px;
+    padding: 0;
     
+}
+
+.toolbar{
+    padding: 0 10px !important;
+}
+
+
+.roadmap-area{
+    display: flex;
+    flex-direction: column;
+    max-width: 384px;
+}
+
+
+.sessions-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    text-align: center;
+    column-gap: 16px;
+    grid-row-gap: 12px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    min-width: 320px;
+
+}
+
+
+.sessions-container h6{
+    padding-top: 8px;
+}
+
+.session-roadmap{
+border: 2px solid #4b0dba;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+background-color: #4b0dba;
+color: #fff;
+}
+
+.step_path_left,
+.step_path_right {
+    width: 30px;
+    border: 2px solid #93a4b7;
+    border-radius: 10px;
+    position: relative;
+    bottom: 32px;
+    margin-top: 20px;
+}
+
+.step_path_right{
+    left:38px;
+}
+
+.step_path_left{
+    right:30px;
+}
+.step_path_bottom{
+width: 12px;
+border: 2px solid #93a4b7;
+border-radius: 10px;
+position: relative;
+left: 13px;
+top: 8px;
+transform: rotate(90deg);
+}
+
+
+.form-div input{
+    width: 400px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.form-div div{
+    width: 700px;
+    align-items: center;
+    padding: 5px;
+}
+
+.error{
+    color:red;
 }

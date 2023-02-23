@@ -1,0 +1,62 @@
+[
+    {
+        "heading": "What is Javascript?",
+        "content": "This JavaScript tutorial will teach you everything you need to know to get started with the JavaScript programming language.",
+        "task": "Write a blog about objects and its internal representation in Javascript",
+        "video": "https://www.youtube.com/embed/PkZNo7MFNFg"
+    },
+    {
+        "heading": "HTML & CSS",
+        "content": "HTML and CSS are essential skills to have for a career in web development.In this video we will cover both languages from the scratch and by the end of the video you will be creating your own projects",
+        "task": "Build a responsive web page with html and css styles",
+        "video": "https://www.youtube.com/embed/mU6anWqZJcc"
+    },
+    {
+        "heading": "DOM - Document vs Window",
+        "content": "Learn about JavaScript DOM manipulation to add, remove, and modify elements of a website. ",
+        "task": "Create a web page with DOM Pagination",
+        "video": "https://www.youtube.com/embed/5fb2aPlgoys"
+    },
+    {
+        "heading": "Async Programming",
+        "content": "Learn how to use Async/Await, Promises, and Callbacks in JavaScript.",
+        "task": "Display countdown from 10 to 1 on the screen and then display Happy Independence day on the screen.",
+        "video": "https://www.youtube.com/embed/ZYb_ZU8LNxs"
+    },
+    {
+        "heading": "React",
+        "content": "React is one of the most popular front-end JavaScript libraries for building user interfaces. After completing this video, you will be able to build web apps in modern React, using patterns like functional components and hooks.",
+        "task": "Design an UI to implement the CRUD Dashboard",
+        "video": "https://www.youtube.com/embed/bMknfKXIFA8"
+    },
+    {
+        "heading": "MySQL",
+        "content": "Database management basics and SQL using the MySQL RDBMS.",
+        "task": "Design a DB for IMDB",
+        "video": "https://www.youtube.com/embed/HXV3zeQKqGY"
+    },
+    {
+        "heading": "MongoDB",
+        "content": "This video explains the basic differences between SQL and NoSQL, followed by the download and installation of MongoDB. Then we look at some of the basic commands and terminologies we must know of while working with MongoDB",
+        "task": "Design a DB for zenclass",
+        "video": "https://www.youtube.com/embed/ny-rU3jyt1E"
+    },
+    {
+        "heading": "Node.js and Express.js",
+        "content": "You will learn the fundamentals of Node and Express. Then, you will learn to build a complex Rest API. Finally, you will build a MERN app and other Node projects.",
+        "task": "Create an Hall Booking System with Nodejs",
+        "video": "https://www.youtube.com/embed/Oe421EPjeBE"
+    },
+    {
+        "heading": "Node & MongoDB connectivity",
+        "content": "Connecting your Node.js application to MongoDB, creating a cluster, and connecting your application to the cluster.",
+        "task": "Assign mentor for each students with Node, Express and MongoDB",
+        "video": "https://www.youtube.com/embed/bhiEJW5poHU"
+    },
+    {
+        "heading": "JWT Authentication",
+        "content": "A quick overview of how to sign/verify JWT tokens and place them inside a cookie to do authentication on your secured express API routes.",
+        "task": "Create a login page with JWT auth",
+        "video": "https://www.youtube.com/embed/dX_LteE0NFM"
+    }
+]
